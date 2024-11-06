@@ -1,6 +1,6 @@
 package dev.sondre.spring.persistence
 
-import dev.sondre.spring.NotFound
+import dev.sondre.spring.exceptions.NotFound
 import dev.sondre.spring.domain.Domain
 import jakarta.persistence.Entity
 import jakarta.persistence.Id

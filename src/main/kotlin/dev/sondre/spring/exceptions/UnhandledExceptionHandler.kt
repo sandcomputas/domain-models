@@ -1,4 +1,4 @@
-package dev.sondre.spring
+package dev.sondre.spring.exceptions
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -11,6 +11,6 @@ class UnhandledExceptionHandler {
 
     @ExceptionHandler(Exception::class)
     fun handleUnhandledException(e: Exception): ResponseEntity<String> {
-        return ResponseEntity("500 - Internal Error", HttpStatus.INTERNAL_SERVER_ERROR)
+        return ResponseEntity("Internal Error :'(", HttpStatus.INTERNAL_SERVER_ERROR)
     }
 }

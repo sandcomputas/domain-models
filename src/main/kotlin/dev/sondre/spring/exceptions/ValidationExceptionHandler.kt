@@ -1,4 +1,4 @@
-package dev.sondre.spring
+package dev.sondre.spring.exceptions
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException
 import com.fasterxml.jackson.databind.exc.MismatchedInputException
@@ -26,16 +26,4 @@ class ValidationExceptionHandler {
         val errorMessage = "$fieldName cannot be null"
         return ResponseEntity(mapOf("error" to errorMessage), HttpStatus.BAD_REQUEST)
     }
-
-    @ExceptionHandler(BadRequest::class)
-    fun handleBadRequest(e: BadRequest): ResponseEntity<String> {
-        return ResponseEntity(e.message, HttpStatus.BAD_REQUEST)
-    }
-
-    @ExceptionHandler(NotFound::class)
-    fun handleNotFound(e: NotFound): ResponseEntity<String> {
-        return ResponseEntity(e.message, HttpStatus.NOT_FOUND)
-    }
-
-    // Todo add custom exceptions for bad_request, etc...
 }

@@ -1,6 +1,6 @@
 package dev.sondre.spring.domain
 
-import dev.sondre.spring.BadRequest
+import dev.sondre.spring.exceptions.BadRequest
 import org.springframework.http.HttpStatus
 import org.springframework.web.server.ResponseStatusException
 import java.util.UUID
@@ -8,7 +8,7 @@ import java.util.UUID
 
 
 abstract class AbstractDomain {
-    private lateinit var id: UUID
+    lateinit var id: UUID
 
     fun withId(id: UUID) {
         if (!this::id.isInitialized) {

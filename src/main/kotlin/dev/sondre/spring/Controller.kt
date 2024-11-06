@@ -26,6 +26,7 @@ class Controller(private val repo: DomainRepository) {
 
     @PutMapping("/{id}")
     fun update(@PathVariable id: UUID, @RequestBody new: Domain): Domain {
+        new.withId(id)
         val old = repo.find(id)
         old.assertChangeableTo(new)
         return repo.save(new)
