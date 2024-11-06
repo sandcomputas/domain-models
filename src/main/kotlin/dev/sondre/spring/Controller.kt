@@ -1,6 +1,6 @@
 package dev.sondre.spring
 
-import dev.sondre.spring.domain.Domain
+import dev.sondre.spring.domain.ExampleDomain
 import dev.sondre.spring.persistence.DomainRepository
 import org.springframework.web.bind.annotation.*
 import java.util.*
@@ -9,23 +9,23 @@ import java.util.*
 class Controller(private val repo: DomainRepository) {
 
     @GetMapping("/{id}")
-    fun load(@PathVariable id: UUID): Domain {
+    fun load(@PathVariable id: UUID): ExampleDomain {
         return repo.find(id)
     }
 
     @GetMapping
-    fun list(): List<Domain> {
+    fun list(): List<ExampleDomain> {
         return repo.list()
     }
 
     @PostMapping
-    fun save(@RequestBody domain: Domain): Domain {
+    fun save(@RequestBody domain: ExampleDomain): ExampleDomain {
         domain.initNew()
         return repo.save(domain)
     }
 
     @PutMapping("/{id}")
-    fun update(@PathVariable id: UUID, @RequestBody new: Domain): Domain {
+    fun update(@PathVariable id: UUID, @RequestBody new: ExampleDomain): ExampleDomain {
         new.withId(id)
         val old = repo.find(id)
         old.assertChangeableTo(new)

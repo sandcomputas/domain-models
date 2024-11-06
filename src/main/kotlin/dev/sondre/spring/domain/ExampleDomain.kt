@@ -2,9 +2,9 @@ package dev.sondre.spring.domain
 
 import java.time.OffsetDateTime
 
-class Domain(val name: String, val datetime: OffsetDateTime) : AbstractDomain() {
+class ExampleDomain(val name: String, val datetime: OffsetDateTime) : AbstractDomainModel() {
 
-    fun assertChangeableTo(new: Domain) {
+    fun assertChangeableTo(new: ExampleDomain) {
         val conditions = mapOf(
             "Id cannot change" to { id == new.id },
             "Name cannot change" to { name == new.name }

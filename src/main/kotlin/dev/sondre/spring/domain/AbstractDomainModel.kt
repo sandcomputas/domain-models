@@ -7,7 +7,7 @@ import java.util.UUID
 
 
 
-abstract class AbstractDomain {
+abstract class AbstractDomainModel {
     lateinit var id: UUID
 
     fun withId(id: UUID) {
