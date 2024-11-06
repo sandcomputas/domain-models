@@ -6,6 +6,11 @@ The goal here has been to use one distinct domain model throughout the entire ap
 
 Also, we are trying to avoid having to add repetitive validation annotations to our domain objects. Things like non-null checks should be handled by the framework by using reflection to realize what  Kotlin objects are non-nullable and therefore should not be allowed to be null in incoming requests. Adding a @NotNull annotation should be redundant. 
 
+## Features
+
+1. "One clean domain model" - clear separation between persistance and business logic
+2. Exception handling - both for invalid request input (model validation) and for throwing exceptions in cases where 404 not found or 403 bad request etc. should be returned. This is handled using custom exceptions and corresponding exception handlers
+
 
 ## Other options
 
