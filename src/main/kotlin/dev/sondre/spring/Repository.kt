@@ -35,7 +35,12 @@ class SQLDomain(
     }
 
     override fun toPOJO(): Domain {
-        return Domain(id, name)
+        val d = Domain(name)
+        // minor disadvantage is that id cannot be private for this to work. Another option is to have a
+        // fromSQL method on all domain objects, but this is not so nice either because POJOs should maybe
+        // not have to deal with persistence stuff.
+        d.id = id
+        return d
     }
 }
 

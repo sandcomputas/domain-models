@@ -20,6 +20,12 @@ class Controller(
 
     @PostMapping
     fun save(@RequestBody domain: Domain): Domain {
+        domain.initNew()
         return repo.save(domain)
+    }
+
+    @PutMapping("/{id}")
+    fun update(@PathVariable id: UUID, @RequestBody domain: Domain): Domain {
+        TODO("")
     }
 }
