@@ -17,4 +17,9 @@ class GlobalExceptionHandler {
         val errorMessage = "$fieldName cannot be null"
         return ResponseEntity(mapOf("error" to errorMessage), HttpStatus.BAD_REQUEST)
     }
+
+    @ExceptionHandler(Exception::class)
+    fun handleUnhandledException(e: Exception): ResponseEntity<String> {
+        return ResponseEntity("500 - Internal Error", HttpStatus.INTERNAL_SERVER_ERROR)
+    }
 }
