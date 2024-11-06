@@ -4,6 +4,9 @@ spring:
   jackson:
     deserialization:
       fail-on-null-for-primitives: true
+      fail-on-null-creator-properties: true
+#      wrap-exceptions: true
+
   jpa:
     hibernate:
       ddl-auto: create-drop
