@@ -4,6 +4,8 @@ import java.time.OffsetDateTime
 
 class ExampleDomain(val name: String, val datetime: OffsetDateTime) : AbstractDomainModel() {
 
+    // Domain logic:
+
     fun assertChangeableTo(new: ExampleDomain) {
         val conditions = mapOf(
             "Id cannot change" to { id == new.id },
