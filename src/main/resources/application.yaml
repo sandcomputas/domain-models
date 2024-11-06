@@ -4,3 +4,7 @@ spring:
   jackson:
     deserialization:
       fail-on-null-for-primitives: true
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
