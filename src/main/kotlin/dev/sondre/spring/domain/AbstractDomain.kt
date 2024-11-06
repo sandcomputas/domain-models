@@ -25,7 +25,7 @@ abstract class AbstractDomain {
         id = UUID.randomUUID()
     }
 
-    fun assert(predicate: () -> Boolean, errorMessage: String)  {
+    fun assertInput(predicate: () -> Boolean, errorMessage: String)  {
         if (!predicate()) {
             throw BadRequest(errorMessage)
         }

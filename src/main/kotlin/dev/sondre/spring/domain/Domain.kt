@@ -10,7 +10,7 @@ class Domain(val name: String, val datetime: OffsetDateTime) : AbstractDomain() 
             "Name cannot change" to { name == new.name }
         )
         conditions.forEach {
-            assert(it.value, it.key)
+            assertInput(it.value, it.key)
         }
     }
 
