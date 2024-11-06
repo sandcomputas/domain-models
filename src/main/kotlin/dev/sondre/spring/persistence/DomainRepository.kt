@@ -1,5 +1,6 @@
-package dev.sondre.spring
+package dev.sondre.spring.persistence
 
+import dev.sondre.spring.Domain
 import jakarta.persistence.Entity
 import jakarta.persistence.EntityManager
 import jakarta.persistence.Id
@@ -11,14 +12,6 @@ import org.springframework.stereotype.Repository
 import org.springframework.web.server.ResponseStatusException
 import java.util.*
 
-
-interface SQLModel<POJO> {
-    fun toPOJO(): POJO
-}
-
-interface SQLModelCreator<POJO, SQLModel> {
-    fun fromPOJO(pojo: POJO): SQLModel
-}
 
 @Entity
 class SQLDomain(

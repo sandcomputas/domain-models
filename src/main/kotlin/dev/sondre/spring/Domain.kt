@@ -1,6 +1,5 @@
 package dev.sondre.spring
 
-import io.swagger.v3.oas.annotations.media.Schema
 import org.springframework.http.HttpStatus
 import org.springframework.web.server.ResponseStatusException
 import java.util.*
@@ -8,10 +7,6 @@ import java.util.*
 class Domain(
     val name: String,
 ) {
-    // Hvis vi er ekstremt opptatt av at Swagger skal være korrekt, kan vi kan med denne for
-    // å vise at bruker ikke selv kan oppdatere denne.
-    // jeg stemmer i mot. Det bør være åpenbart at bruker ikke kan bestemme id
-    @Schema(readOnly = true)
     lateinit var id: UUID
 
     fun initNew() {

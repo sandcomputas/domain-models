@@ -1,5 +1,6 @@
 package dev.sondre.spring
 
+import dev.sondre.spring.persistence.DomainRepository
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
