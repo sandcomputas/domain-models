@@ -6,19 +6,16 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class Controller {
-
-    val domainDb = mutableListOf<Domain>()
-
+class Controller(
+    val repo: DomainRepository
+) {
     @GetMapping
     fun list(): List<Domain> {
-        return domainDb
+        return repo.list()
     }
 
     @PostMapping
     fun save(@RequestBody domain: Domain): Domain {
-        domainDb.add(domain)
-        return domain
+        return repo.save(domain)
     }
-
 }

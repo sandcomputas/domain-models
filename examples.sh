@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
-curl -H 'Content-Type: Application/json' -d '{"name": "a name"}' localhost:8080/
+# Create new
+curl -X POST -H 'Content-type: Application/json' -d '{"id": "EE3D6B70-E0C9-4E70-A91F-3A8120DD4F7A", "name": "test"}' localhost:8080/
 
-curl -H 'Content-Type: Application/json' -d '{"name": "a name"}' localhost:8080/
+# List all
+curl localhost:8080/
+

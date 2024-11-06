@@ -90,6 +90,7 @@
                     </args>
                     <compilerPlugins>
                         <plugin>spring</plugin>
+                        <plugin>jpa</plugin>
                     </compilerPlugins>
                 </configuration>
                 <dependencies>
@@ -98,24 +99,10 @@
                         <artifactId>kotlin-maven-allopen</artifactId>
                         <version>${kotlin.version}</version>
                     </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
-                <artifactId>kotlin-maven-plugin</artifactId>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <version>${kotlin.version}</version>
-
-                <configuration>
-                    <compilerPlugins>
-                        <plugin>jpa</plugin>
-                    </compilerPlugins>
-                </configuration>
-
-                <dependencies>
                     <dependency>
                         <groupId>org.jetbrains.kotlin</groupId>
                         <artifactId>kotlin-maven-noarg</artifactId>
-                        <version>${kotlin.version}</version>
+                        <version>1.8.0</version>
                     </dependency>
                 </dependencies>
             </plugin>
