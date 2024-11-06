@@ -1,15 +1,12 @@
 package dev.sondre.spring.persistence
 
-import dev.sondre.spring.Domain
+import dev.sondre.spring.NotFound
+import dev.sondre.spring.domain.Domain
 import jakarta.persistence.Entity
-import jakarta.persistence.EntityManager
 import jakarta.persistence.Id
-import jakarta.persistence.PersistenceContext
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.repository.findByIdOrNull
-import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Repository
-import org.springframework.web.server.ResponseStatusException
 import java.util.*
 
 
@@ -39,13 +36,10 @@ class SQLDomain(
 interface DomainRepositoryInternal : JpaRepository<SQLDomain, UUID>
 
 @Repository
-class DomainRepository(
-    @PersistenceContext val entityManager: EntityManager,
-    val repo: DomainRepositoryInternal
-) {
+class DomainRepository(private val repo: DomainRepositoryInternal) {
 
     fun find(id: UUID): Domain {
-        val sql = repo.findByIdOrNull(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "")
+        val sql = repo.findByIdOrNull(id) ?: throw NotFound("Domain with id $id not found")
         return sql.toPOJO()
     }
 

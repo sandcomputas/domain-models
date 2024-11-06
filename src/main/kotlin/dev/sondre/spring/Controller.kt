@@ -1,5 +1,6 @@
 package dev.sondre.spring
 
+import dev.sondre.spring.domain.Domain
 import dev.sondre.spring.persistence.DomainRepository
 import org.springframework.web.bind.annotation.*
 import java.util.*
@@ -26,7 +27,9 @@ class Controller(
     }
 
     @PutMapping("/{id}")
-    fun update(@PathVariable id: UUID, @RequestBody domain: Domain): Domain {
-        TODO("")
+    fun update(@PathVariable id: UUID, @RequestBody new: Domain): Domain {
+        val old = repo.find(id)
+        old.assertChangeableTo(new)
+        return repo.save(new)
     }
 }

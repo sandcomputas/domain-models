@@ -1,12 +1,13 @@
-package dev.sondre.spring
+package dev.sondre.spring.domain
 
+import dev.sondre.spring.BadRequest
 import org.springframework.http.HttpStatus
 import org.springframework.web.server.ResponseStatusException
-import java.util.*
+import java.util.UUID
 
-class Domain(
-    val name: String,
-) {
+
+
+abstract class AbstractDomain {
     lateinit var id: UUID
 
     fun initNew() {
@@ -14,5 +15,11 @@ class Domain(
             throw ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Trying to override UUID")
         }
         id = UUID.randomUUID()
+    }
+
+    fun assert(predicate: () -> Boolean, errorMessage: String)  {
+        if (!predicate()) {
+            throw BadRequest(errorMessage)
+        }
     }
 }
