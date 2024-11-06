@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: spring
+  jackson:
+    deserialization:
+      fail-on-null-for-primitives: true
