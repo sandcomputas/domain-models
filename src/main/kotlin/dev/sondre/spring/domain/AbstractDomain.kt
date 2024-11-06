@@ -8,7 +8,15 @@ import java.util.UUID
 
 
 abstract class AbstractDomain {
-    lateinit var id: UUID
+    private lateinit var id: UUID
+
+    fun withId(id: UUID) {
+        if (!this::id.isInitialized) {
+            this.id = id
+        }
+    }
+
+    fun loadId(): UUID = id
 
     fun initNew() {
         if (this::id.isInitialized) {

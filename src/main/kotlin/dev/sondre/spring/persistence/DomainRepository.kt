@@ -7,6 +7,7 @@ import jakarta.persistence.Id
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Repository
+import java.time.OffsetDateTime
 import java.util.*
 
 
@@ -14,21 +15,19 @@ import java.util.*
 class SQLDomain(
     @Id
     val id: UUID,
-    val name: String
+    val name: String,
+    val datetime: OffsetDateTime
 ) : SQLModel<Domain> {
 
     companion object : SQLModelCreator<Domain, SQLDomain> {
         override fun fromPOJO(pojo: Domain): SQLDomain {
-            return SQLDomain(pojo.id, pojo.name)
+            return SQLDomain(pojo.loadId(), pojo.name, pojo.datetime)
         }
     }
 
     override fun toPOJO(): Domain {
-        val d = Domain(name)
-        // minor disadvantage is that id cannot be private for this to work. Another option is to have a
-        // fromSQL method on all domain objects, but this is not so nice either because POJOs should maybe
-        // not have to deal with persistence stuff.
-        d.id = id
+        val d = Domain(name, datetime)
+        d.withId(id)
         return d
     }
 }

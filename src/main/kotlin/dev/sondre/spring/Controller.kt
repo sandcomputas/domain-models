@@ -6,9 +6,7 @@ import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
-class Controller(
-    val repo: DomainRepository
-) {
+class Controller(private val repo: DomainRepository) {
 
     @GetMapping("/{id}")
     fun load(@PathVariable id: UUID): Domain {

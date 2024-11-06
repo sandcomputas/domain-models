@@ -1,6 +1,8 @@
 package dev.sondre.spring.domain
 
-class Domain(val name: String) : AbstractDomain() {
+import java.time.OffsetDateTime
+
+class Domain(val name: String, val datetime: OffsetDateTime) : AbstractDomain() {
 
     fun assertChangeableTo(new: Domain) {
         val condition = { name == new.name }
