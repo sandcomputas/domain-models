@@ -16,5 +16,9 @@ class Example(val name: String, val datetime: OffsetDateTime) : AbstractDomainMo
         }
     }
 
+    // This is super nice for dynamic properties
+    val outdated: Boolean
+        get() = datetime.isAfter(OffsetDateTime.now())
+
     // More domain logic here...
 }
