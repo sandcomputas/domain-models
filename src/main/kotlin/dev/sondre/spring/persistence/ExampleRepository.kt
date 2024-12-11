@@ -4,6 +4,7 @@ import dev.sondre.spring.exceptions.NotFound
 import dev.sondre.spring.domain.Example
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
+import jakarta.persistence.Table
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Repository
@@ -12,13 +13,13 @@ import java.util.*
 
 
 @Entity
+@Table(name="example")
 class SQLExample(
     @Id
     val id: UUID,
     val name: String,
     val datetime: OffsetDateTime
 ) : SQLModel<Example> {
-
     companion object : SQLModelCreator<Example, SQLExample> {
         override fun fromPOJO(pojo: Example): SQLExample {
             return SQLExample(pojo.loadId(), pojo.name, pojo.datetime)
